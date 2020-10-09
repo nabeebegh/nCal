@@ -11,7 +11,7 @@ In short, the goal of this program is to provide the end user with the absolute 
 without the added bloatware and confusion that is present on other calendar software. In short, the goal of **nCal** is to be a
 minimalist calendar.
 
-The target end users for **nCal** are those who only needs the basics from a calendar software; without any of the extra features
+The target end users for **nCal** are those who only need the basics from a calendar software; without any of the extra features
 or confusing interfaces that are only used by advanced users. If someone needs to keep track of the events coming up in their life in the simplest way, **nCal** is for them!
 
 *Developer Note: My interest in this project came from my experience with several calendar applications I have used that had too much going on
