@@ -17,3 +17,12 @@ or confusing interfaces that are only used by advanced users. If someone needs t
 *Developer Note: My interest in this project came from my experience with several calendar applications I have used that had too much going on
 for a user like me that only needed to use the most necessary features.* 
  
+ 
+## User Stories
+The following are "User stories" that describe how someone can use **nCal** to produce a specific outcome
+- "*As a user, I want to be able to add an event, reminder, or task to my calendar.*"
+- "*As a user, I want to be able to view the calendar and see my entries.*"
+- "*As a user I want to be able to set the time and date for when I get reminded about my entries.*"
+- "*As a user I want to be able to edit an entry on my calendar.*"
+- "*As a user I want to be able to delete an entry from the calendar*"
+- "*As a user, I want to be able to save my calendar and view it late*"
