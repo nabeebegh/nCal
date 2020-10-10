@@ -49,49 +49,40 @@ public class Date {
     }
 
 
-
-
-
-    // REQUIRES:
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS:  add an Event to the list of events for the day.
     public void addEvent() {
-
+        // stub
     }
 
-    // REQUIRES:
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS:  if event in eventList, removes remove from list, else print error statement.
     public void removeEvent() {
 
     }
 
-    // REQUIRES:
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: adds a reminder to the list of reminders for the day.
     public void addReminder() {
-
+        // stub
     }
 
-    // REQUIRES:
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: if reminder in reminderList, remove from list, else print error statement.
     public void removeReminder() {
-
+        // stub
     }
 
-    // REQUIRES:
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: adds a tasks to the to-do list for the day
     public void addTodo() {
-
+        // stub
     }
 
-    // REQUIRES:
     // MODIFIES: this
-    // EFFECTS:
+    // EFFECTS: if task in to-do list, remove from list, else print error statement.
     public void removeTodo() {
-
+        // stub
     }
 
 
