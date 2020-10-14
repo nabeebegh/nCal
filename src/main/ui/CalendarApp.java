@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 // nCal application
 public class CalendarApp {
+
     // CONSTANTS
     public static final Month JANUARY = new Month("January");
     public static final Month FEBRUARY = new Month("February");
@@ -41,6 +42,9 @@ public class CalendarApp {
 
 
     // INITIALIZE MONTHS FOR CALENDAR
+
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInJanuary for correct amount of days in month.
     public void createJanuary() {
         daysInJanuary = new ArrayList<>();
         for (int i = 1; i <= JANUARY.getNumberOfDays(); i++) {
@@ -49,6 +53,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInFebruary for correct amount of days in month.
     public void createFebruary() {
         daysInFebruary = new ArrayList<>();
         for (int i = 1; i <= FEBRUARY.getNumberOfDays(); i++) {
@@ -57,6 +63,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInMarch for correct amount of days in month.
     public void createMarch() {
         daysInMarch = new ArrayList<>();
         for (int i = 1; i <= MARCH.getNumberOfDays(); i++) {
@@ -65,6 +73,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInApril for correct amount of days in month.
     public void createApril() {
         daysInApril = new ArrayList<>();
         for (int i = 1; i <= APRIL.getNumberOfDays(); i++) {
@@ -73,6 +83,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInMay for correct amount of days in month.
     public void createMay() {
         daysInMay = new ArrayList<>();
         for (int i = 1; i <= MAY.getNumberOfDays(); i++) {
@@ -81,6 +93,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInJune for correct amount of days in month.
     public void createJune() {
         daysInJune = new ArrayList<>();
         for (int i = 1; i <= JUNE.getNumberOfDays(); i++) {
@@ -89,6 +103,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInJuly for correct amount of days in month.
     public void createJuly() {
         daysInJuly = new ArrayList<>();
         for (int i = 1; i <= JULY.getNumberOfDays(); i++) {
@@ -97,6 +113,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInAugust for correct amount of days in month.
     public void createAugust() {
         daysInAugust = new ArrayList<>();
         for (int i = 1; i <= AUGUST.getNumberOfDays(); i++) {
@@ -105,6 +123,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInSeptember for correct amount of days in month.
     public void createSeptember() {
         daysInSeptember = new ArrayList<>();
         for (int i = 1; i <= SEPTEMBER.getNumberOfDays(); i++) {
@@ -113,6 +133,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInOctober for correct amount of days in month.
     public void createOctober() {
         daysInOctober = new ArrayList<>();
         for (int i = 1; i <= OCTOBER.getNumberOfDays(); i++) {
@@ -121,6 +143,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInNovember for correct amount of days in month.
     public void createNovember() {
         daysInNovember = new ArrayList<>();
         for (int i = 1; i <= NOVEMBER.getNumberOfDays(); i++) {
@@ -129,6 +153,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a list of Dates in daysInDecember for correct amount of days in month.
     public void createDecember() {
         daysInDecember = new ArrayList<>();
         for (int i = 1; i <= DECEMBER.getNumberOfDays(); i++) {
@@ -177,12 +203,14 @@ public class CalendarApp {
         System.out.println("\nGoodbye!");
     }
 
+    // EFFECTS: prints user options for main menu
     public void displayMainMenu() {
         System.out.println("\nWelcome to nCal's Main Menu. Select from the following options:");
         System.out.println("\tv -> view calendar");
         System.out.println("\tq -> quit");
     }
 
+    // EFFECTS: prints user options for month choices
     public void displayMonthChoices() {
         System.out.println("\nPlease select a month:");
         System.out.println("\tj -> January");
@@ -197,8 +225,10 @@ public class CalendarApp {
         System.out.println("\to -> October");
         System.out.println("\tn -> November");
         System.out.println("\td -> December");
+        System.out.println("\tany key -> return to main menu");
     }
 
+    // EFFECTS: prints user options for month options
     public void displayMonthMenu() {
         System.out.println("\nHere is your calendar! Please choose one of the options below:");
         System.out.println("\tae -> add event");
@@ -207,9 +237,10 @@ public class CalendarApp {
         System.out.println("\trr -> remove reminder");
         System.out.println("\tat -> add todo");
         System.out.println("\trt -> remove todo");
-        System.out.println("\tm -> return to main menu");
+        System.out.println("\tany key -> return to main menu");
     }
 
+    // EFFECTS: returns String of events for given day of a specified month
     public String returnEvent(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getEventList().size() - 1); i++) {
@@ -221,6 +252,7 @@ public class CalendarApp {
         return (string);
     }
 
+    // EFFECTS: returns String of reminders for given day of a specified month
     public String returnReminder(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getReminderList().size() - 1); i++) {
@@ -232,6 +264,7 @@ public class CalendarApp {
         return (string);
     }
 
+    // EFFECTS: returns String of tasks for given day of a specified month
     public String returnTodo(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getTodoList().size() - 1); i++) {
@@ -243,6 +276,8 @@ public class CalendarApp {
         return (string);
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input, displays month choices, and then prints chosen month
     public void processCommand(String command) {
         if (command.equals("v")) {
             displayMonthChoices();
@@ -267,6 +302,7 @@ public class CalendarApp {
         }
     }
 
+    // EFFECTS: processes user input, and prints chosen month
     public void processCommandContinued(String command) {
         if (command.equals("au")) {
             printAugust();
@@ -281,6 +317,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this, List<Date> l
+    // EFFECTS: adds an event for a given date in the list of days in the month
     public void ae(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
@@ -300,6 +338,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this, List<Date> l
+    // EFFECTS: adds a reminder for a given date in the list of days in the month
     public void ar(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
@@ -319,6 +359,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this, List<Date> l
+    // EFFECTS: adds a task for a given date in the list of days in the month
     public void at(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
@@ -338,6 +380,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this, List<Date> l
+    // EFFECTS: removes an event from given date in the list of days in the month
     public void re(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
@@ -358,6 +402,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this, List<Date> l
+    // EFFECTS: removes a reminder from a given date in the list of days in the month
     public void rr(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
@@ -378,6 +424,8 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this, List<Date> l
+    // EFFECTS: removes a task from a given date in the list of days in the month
     public void rt(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
@@ -398,6 +446,7 @@ public class CalendarApp {
         }
     }
 
+    // EFFECTS: processes command and forwards user to specified month function
     public void processMonthCommand(String command, List<Date> l) {
         if (command.equals("ae")) {
             ae(l);
@@ -414,6 +463,10 @@ public class CalendarApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of January,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printJanuary() {
         System.out.println("-------------------January-------------------");
         for (int i = 0; i <= (daysInJanuary.size() - 1); i++) {
@@ -427,9 +480,12 @@ public class CalendarApp {
         String command = null;
         command = input.next();
         processMonthCommand(command, daysInJanuary);
-
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of February,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printFebruary() {
         System.out.println("-------------------February-------------------");
         for (int i = 0; i <= (daysInFebruary.size() - 1); i++) {
@@ -445,6 +501,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInFebruary);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of March,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printMarch() {
         System.out.println("-------------------March-------------------");
         for (int i = 0; i <= (daysInMarch.size() - 1); i++) {
@@ -460,6 +520,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInMarch);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of April,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printApril() {
         System.out.println("-------------------April-------------------");
         for (int i = 0; i <= (daysInApril.size() - 1); i++) {
@@ -475,6 +539,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInApril);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of May,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printMay() {
         System.out.println("-------------------May-------------------");
         for (int i = 0; i <= (daysInMay.size() - 1); i++) {
@@ -490,6 +558,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInMay);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of June,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printJune() {
         System.out.println("-------------------June-------------------");
         for (int i = 0; i <= (daysInJune.size() - 1); i++) {
@@ -505,6 +577,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInJune);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of July,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printJuly() {
         System.out.println("-------------------July-------------------");
         for (int i = 0; i <= (daysInJuly.size() - 1); i++) {
@@ -520,6 +596,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInJuly);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of August,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printAugust() {
         System.out.println("-------------------August-------------------");
         for (int i = 0; i <= (daysInAugust.size() - 1); i++) {
@@ -535,6 +615,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInAugust);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of September,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printSeptember() {
         System.out.println("-------------------September-------------------");
         for (int i = 0; i <= (daysInSeptember.size() - 1); i++) {
@@ -550,6 +634,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInSeptember);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of October,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printOctober() {
         System.out.println("-------------------October-------------------");
         for (int i = 0; i <= (daysInOctober.size() - 1); i++) {
@@ -565,6 +653,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInOctober);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of November,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printNovember() {
         System.out.println("-------------------November-------------------");
         for (int i = 0; i <= (daysInNovember.size() - 1); i++) {
@@ -580,6 +672,10 @@ public class CalendarApp {
         processMonthCommand(command, daysInNovember);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Prints out every date in the month of December,
+    //          prints all events, reminds, and tasks for each date,
+    //          then prompts users with options for month.
     public void printDecember() {
         System.out.println("-------------------December-------------------");
         for (int i = 0; i <= (daysInDecember.size() - 1); i++) {
