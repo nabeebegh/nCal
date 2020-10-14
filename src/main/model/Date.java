@@ -16,7 +16,7 @@ public class Date {
     private int day;
     private List<Event> eventList;        // user entry of events
     private List<Reminder> reminderList;  // user entry of reminders
-    private List<TodoTask> todoList;      // user entry of to-do list tasks
+    private List<Todo> todoList;      // user entry of to-do list tasks
 
     // EFFECTS: Constructs a day with a month, day, and empty lists for user entries.
     public Date(Month month, int day) {
@@ -44,45 +44,60 @@ public class Date {
         return this.reminderList;
     }
 
-    public List<TodoTask> todoList() {
+    public List<Todo> getTodoList() {
         return this.todoList;
     }
 
 
     // MODIFIES: this
     // EFFECTS:  add an Event to the list of events for the day.
-    public void addEvent() {
-        // stub
+    public void addEvent(Event event) {
+        eventList.add(event);
     }
 
     // MODIFIES: this
-    // EFFECTS:  if event in eventList, removes remove from list, else print error statement.
-    public void removeEvent() {
-
+    // EFFECTS:  if event in eventList, remove from list and return true, else false.
+    public boolean removeEvent(Event event) {
+        if (eventList.contains(event)) {
+            eventList.remove(event);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: adds a reminder to the list of reminders for the day.
-    public void addReminder() {
-        // stub
+    public void addReminder(Reminder reminder) {
+        reminderList.add(reminder);
     }
 
     // MODIFIES: this
-    // EFFECTS: if reminder in reminderList, remove from list, else print error statement.
-    public void removeReminder() {
-        // stub
+    // EFFECTS: if reminder in reminderList, remove from list and return true, else false.
+    public boolean removeReminder(Reminder reminder) {
+        if (reminderList.contains(reminder)) {
+            reminderList.remove(reminder);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: adds a tasks to the to-do list for the day
-    public void addTodo() {
-        // stub
+    public void addTodo(Todo todo) {
+        todoList.add(todo);
     }
 
     // MODIFIES: this
-    // EFFECTS: if task in to-do list, remove from list, else print error statement.
-    public void removeTodo() {
-        // stub
+    // EFFECTS: if task in to-do list, remove from list and return true, else false..
+    public boolean removeTodo(Todo todo) {
+        if (todoList.contains(todo)) {
+            todoList.remove(todo);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

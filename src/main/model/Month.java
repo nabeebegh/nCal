@@ -1,12 +1,10 @@
 /*
  ~Month.java~
-  The class which constructs an empty Month object.
-  Method(s) in this class can be used to allocate correct amount of days to a month.
+  The class which constructs an empty Month object and then
+  allocates a correct amount of days to a month.
 */
 
 package model;
-
-import java.util.List;
 
 public class Month {
     // CONSTANTS
@@ -15,13 +13,13 @@ public class Month {
     public static final int FEBRUARY_DAYS = 28;
 
     // FIELDS
-    String nameOfMonth;
-    int numberOfDays;
+    private String nameOfMonth;
+    private int numberOfDays;
 
     // REQUIRES: nameOfMonth must be one of the twelve months in the gregorian calendar
     //           no abbreviations, first letter capital
     //           January, February, March, April, ...
-    // EFFECTS:  Specified month with no days
+    // EFFECTS:  Creates month with given name and then allocates correct amount of days
     public Month(String nameOfMonth) {
         this.nameOfMonth = nameOfMonth;
         createMonth();
@@ -37,8 +35,18 @@ public class Month {
         return this.numberOfDays;
     }
 
+    // MODIFIES: this
     // EFFECTS: allocates correct amount of days for a given Month
-    public int createMonth() {
-        return 0; // stub
+    public void createMonth() {
+        if ((nameOfMonth.equals("January") || ((nameOfMonth.equals("March")) || ((nameOfMonth.equals("May"))
+                || (nameOfMonth.equals("July") || (nameOfMonth.equals("August") || (nameOfMonth.equals("October")
+                || (nameOfMonth.equals("December"))))))))) {
+            numberOfDays = FULL_MONTH_DAYS;
+        } else if ((nameOfMonth.equals("April") || ((nameOfMonth.equals("June") || (nameOfMonth.equals("September")
+                  || (nameOfMonth.equals("November"))))))) {
+            numberOfDays = MONTH_DAYS;
+        } else {
+            numberOfDays = FEBRUARY_DAYS;
+        }
     }
 }

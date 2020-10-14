@@ -1,10 +1,16 @@
+/*
+ ~Event.java~
+  The class which constructs an Reminder object which stores the time of the reminder
+  and its name.
+*/
+
 package model;
 
 public class Reminder {
 
     // FIELDS
-    String reminderName;
-    int time; // In 24HR format
+    private String reminderName;
+    private int time; // In 24HR format
 
     // REQUIRES: 0000 <= time <= 2359
     public Reminder(String eventName, int time) {
@@ -14,7 +20,7 @@ public class Reminder {
 
     // GETTERS
 
-    public String getEventName() {
+    public String getReminderName() {
         return this.reminderName;
     }
 

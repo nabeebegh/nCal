@@ -1,10 +1,17 @@
+/*
+ ~Event.java~
+  The class which constructs an Event object which stores the time of the event
+  and its name.
+*/
+
+
 package model;
 
 public class Event {
 
     // FIELDS
-    String eventName;
-    int time; // In 24HR format
+    private String eventName;
+    private int time; // In 24HR format
 
     // REQUIRES: 0000 <= time <= 2359
     public Event(String eventName, int time) {
