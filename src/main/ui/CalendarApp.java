@@ -185,7 +185,7 @@ public class CalendarApp {
     // EFFECTS: processes user input
     public void runCalendar() {
         boolean keepGoing = true;
-        String command = null;
+        String command;
 
         while (keepGoing) {
             displayMainMenu();
@@ -477,7 +477,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInJanuary.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInJanuary);
     }
@@ -496,7 +496,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInFebruary.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInFebruary);
     }
@@ -515,7 +515,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInMarch.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInMarch);
     }
@@ -534,7 +534,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInApril.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInApril);
     }
@@ -553,7 +553,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInMay.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInMay);
     }
@@ -572,7 +572,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInJune.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInJune);
     }
@@ -591,7 +591,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInJuly.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInJuly);
     }
@@ -610,7 +610,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInAugust.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInAugust);
     }
@@ -629,7 +629,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInSeptember.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInSeptember);
     }
@@ -648,7 +648,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInOctober.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInOctober);
     }
@@ -667,7 +667,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInNovember.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInNovember);
     }
@@ -686,7 +686,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInDecember.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, daysInDecember);
     }
