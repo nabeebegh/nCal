@@ -390,15 +390,16 @@ public class CalendarApp {
             System.out.println("Enter event number: (First item added is 1, second item added is 2, etc.)");
             String eventNumberString = input.next();
             int eventNumber = Integer.parseInt(eventNumberString);
-            if (eventNumber >= 1 && eventNumber <= l.size()) {
-                l.get(day - 1).getEventList().remove(l.get(day - 1).getEventList().get(eventNumber - 1));
-                System.out.println("Event has been removed");
+            if (eventNumber >= 1 && eventNumber <= l.get(day - 1).getEventList().size()) {
+                if (!(l.get(day - 1).getEventList().isEmpty())) {
+                    l.get(day - 1).getEventList().remove(l.get(day - 1).getEventList().get(eventNumber - 1));
+                    System.out.println("Event has been removed");
+                } else {
+                    System.out.println("Specified event does not exist. Please try again.");
+                }
             } else {
                 System.out.println("Specified event does not exist. Please try again.");
             }
-        } else {
-            System.out.println("Please choose a correct day!");
-            re(l);
         }
     }
 
@@ -412,15 +413,16 @@ public class CalendarApp {
             System.out.println("Enter reminder number: (First item added is 1, second item added is 2, etc.)");
             String reminderNumberString = input.next();
             int reminderNumber = Integer.parseInt(reminderNumberString);
-            if (reminderNumber >= 1 && reminderNumber <= l.size()) {
-                l.get(day - 1).getReminderList().remove(l.get(day - 1).getReminderList().get(reminderNumber - 1));
-                System.out.println("Reminder has been removed");
-            } else {
-                System.out.println("Specified reminder does not exist. Please try again.");
+            if (reminderNumber >= 1 && reminderNumber <= l.get(day - 1).getReminderList().size()) {
+                if (!((l.get(day - 1).getReminderList().isEmpty()))) {
+                    l.get(day - 1).getReminderList().remove(l.get(day - 1).getReminderList().get(reminderNumber - 1));
+                    System.out.println("Reminder has been removed");
+                } else {
+                    System.out.println("Specified reminder does not exist. Please try again.");
+                }
             }
         } else {
-            System.out.println("Please choose a correct day!");
-            rr(l);
+            System.out.println("Specified reminder does not exist. Please try again.");
         }
     }
 
@@ -434,15 +436,16 @@ public class CalendarApp {
             System.out.println("Enter todo number: (First item added is 1, second item added is 2, etc.)");
             String todoNumberString = input.next();
             int todoNumber = Integer.parseInt(todoNumberString);
-            if (todoNumber >= 1 && todoNumber <= l.size()) {
-                l.get(day - 1).getTodoList().remove(l.get(day - 1).getTodoList().get(todoNumber - 1));
-                System.out.println("Reminder has been removed");
+            if (todoNumber >= 1 && todoNumber <= l.get(day - 1).getTodoList().size()) {
+                if (!(l.get(day - 1).getTodoList().isEmpty())) {
+                    l.get(day - 1).getTodoList().remove(l.get(day - 1).getTodoList().get(todoNumber - 1));
+                    System.out.println("task has been removed");
+                } else {
+                    System.out.println("Specified task does not exist. Please try again.");
+                }
             } else {
-                System.out.println("Specified reminder does not exist. Please try again.");
+                System.out.println("Specified task does not exist. Please try again.");
             }
-        } else {
-            System.out.println("Please choose a correct day!");
-            rt(l);
         }
     }
 
@@ -686,7 +689,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(daysInDecember.get(i)));
         }
         displayMonthMenu();
-        String command;
+        String command = null;
         command = input.next();
         processMonthCommand(command, daysInDecember);
     }
