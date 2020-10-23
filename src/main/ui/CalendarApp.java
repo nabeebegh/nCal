@@ -191,6 +191,7 @@ public class CalendarApp {
             displayMainMenu();
             input = new Scanner(System.in);
             command = input.next();
+            input.useDelimiter("\n");
             command = command.toLowerCase();
 
             if (command.equals("q")) {
