@@ -28,4 +28,5 @@ The following are "User stories" that describe how someone can use **nCal** to p
 - "*As a user I want to be able to edit an entry on my calendar.*"
 - "*As a user I want to be able to delete an entry from the calendar*"
 - "*As a user, I want to be able to save my calendar and view it later*"
+- "*As a user, I want to be able to load a previously saved calendar*"
 
