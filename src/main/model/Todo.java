@@ -7,6 +7,8 @@
 
 package model;
 
+import org.json.JSONObject;
+
 public class Todo {
 
     // FIELDS
@@ -27,6 +29,14 @@ public class Todo {
 
     public int getTime() {
         return this.time;
+    }
+
+    // EFFECTS: returns To-do object as a JSONObject
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", taskName);
+        json.put("time", time);
+        return json;
     }
 
 }

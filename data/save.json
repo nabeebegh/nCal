@@ -1,0 +1,10 @@
+{
+    "reminders": [],
+    "month": {"month": "December"},
+    "todos": [],
+    "day": 31,
+    "events": [{
+        "name": "test",
+        "time": 1400
+    }]
+}

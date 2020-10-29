@@ -6,10 +6,13 @@
 
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Date {
+public class Date  {
 
     // FIELDS
     private Month month;
@@ -100,6 +103,44 @@ public class Date {
         }
     }
 
+    // EFFECTS: returns Date object as a JSONObject
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("month", month.toJson());
+        json.put("day", day);
+        json.put("events", eventsToJsonArray());
+        json.put("reminders", remindersToJsonArray());
+        json.put("todos", todosToJsonArray());
+        return json;
+    }
+
+    // EFFECTS: returns Event objects in eventList as a JSONArray
+    private JSONArray eventsToJsonArray() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Event e : eventList) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
+    }
+
+    // EFFECTS: returns Reminder objects in eventList as a JSONArray
+    private JSONArray remindersToJsonArray() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Reminder r : reminderList) {
+            jsonArray.put(r.toJson());
+        }
+        return jsonArray;
+    }
+
+    // EFFECTS: returns To-do objects in eventList as a JSONArray
+    private JSONArray todosToJsonArray() {
+        JSONArray jsonArray = new JSONArray();
+        for (Todo t : todoList) {
+            jsonArray.put(t.toJson());
+        }
+        return jsonArray;
+    }
 
 }
-

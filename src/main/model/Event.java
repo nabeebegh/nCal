@@ -7,6 +7,8 @@
 
 package model;
 
+import org.json.JSONObject;
+
 public class Event {
 
     // FIELDS
@@ -14,6 +16,7 @@ public class Event {
     private int time; // In 24HR format
 
     // REQUIRES: 0000 <= time <= 2359
+    // EFFECTS: constructs Event object with given name and time
     public Event(String eventName, int time) {
         this.eventName = eventName;
         this.time = time;
@@ -27,6 +30,14 @@ public class Event {
 
     public int getTime() {
         return this.time;
+    }
+
+    // EFFECTS: returns Event object as a JSONObject
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", eventName);
+        json.put("time", time);
+        return json;
     }
 
 }

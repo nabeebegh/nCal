@@ -6,6 +6,8 @@
 
 package model;
 
+import org.json.JSONObject;
+
 public class Month {
     // CONSTANTS
     public static final int FULL_MONTH_DAYS = 31;
@@ -49,4 +51,12 @@ public class Month {
             numberOfDays = FEBRUARY_DAYS;
         }
     }
+
+    // EFFECTS: returns Month object as a JSONObject
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("month", nameOfMonth);
+        return json;
+    }
+
 }

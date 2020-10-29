@@ -6,6 +6,8 @@
 
 package model;
 
+import org.json.JSONObject;
+
 public class Reminder {
 
     // FIELDS
@@ -26,6 +28,14 @@ public class Reminder {
 
     public int getTime() {
         return this.time;
+    }
+
+    // EFFECTS: returns Reminder object as a JSONObject
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", reminderName);
+        json.put("time", time);
+        return json;
     }
 
 }
