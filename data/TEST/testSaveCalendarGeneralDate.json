@@ -1,0 +1,16 @@
+{
+    "reminders": [{
+        "name": "testReminder",
+        "time": 1500
+    }],
+    "month": {"month": "January"},
+    "todos": [{
+        "name": "testTodo",
+        "time": 1600
+    }],
+    "day": 1,
+    "events": [{
+        "name": "testEvent",
+        "time": 1400
+    }]
+}

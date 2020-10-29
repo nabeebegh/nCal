@@ -1,3 +1,8 @@
+/*
+ ~CalendarApp.java~
+  The class which compiles the nCal console application.
+*/
+
 package ui;
 
 import model.*;
@@ -164,7 +169,7 @@ public class CalendarApp {
     public String returnReminder(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getReminderList().size() - 1); i++) {
-            string = string + ((date.getReminderList().get(i).getReminderName()) + "@"
+            string = string + ((date.getReminderList().get(i).getReminderName()) + " @ "
                     + (date.getReminderList().get(i).getTime())
                     + ", ");
         }
@@ -175,7 +180,7 @@ public class CalendarApp {
     public String returnTodo(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getTodoList().size() - 1); i++) {
-            string = string + ((date.getTodoList().get(i).getTodoName()) + "@"
+            string = string + ((date.getTodoList().get(i).getTodoName()) + " @ "
                     + (date.getTodoList().get(i).getTime())
                     + ", ");
         }
@@ -456,7 +461,7 @@ public class CalendarApp {
             try {
                 Date d = l.get(i);
                 d = loadCalendar.read();
-                l.remove(1);
+                l.remove(0);
                 l.add(d);
             } catch (IOException e) {
                 System.out.println("Unable to load data from: " + JSON_STORE + "/" + str);

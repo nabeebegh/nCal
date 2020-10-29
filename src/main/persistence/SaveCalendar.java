@@ -1,3 +1,13 @@
+/*
+ ~SaveCalendar.java~
+  Represents a writer that writes JSON representation of Date to a save file
+
+  Citation:
+  Contents of this class were copied from JsonWriter class in JsonSerializationDemo
+  provided by CPSC 210 course at UBC. Permission was given to model this reader
+  after said class.
+*/
+
 package persistence;
 
 import model.*;

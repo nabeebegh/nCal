@@ -10,8 +10,11 @@
     }
   ],
   "month": {"month": "January"},
-  "todos": [],
-  "day": 30,
+  "todos": [{
+      "name": "testTodo",
+      "time": 1800
+    }],
+  "day": 1,
   "events": [{
     "name": "testEvent2",
     "time": 1400
