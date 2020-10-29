@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DateTest {
 
     // CONSTANTS (Single point of control to test various months and dates)
-    private static String month = "January";
-    private static int day = 14;
+    private static final String month = "January";
+    private static final int day = 14;
 
     // FIELDS
     Month testMonth;

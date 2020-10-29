@@ -50,7 +50,7 @@ public class CalendarApp {
     private SaveCalendar saveCalendar;
 
 
-    public void instantiateListofDates(){
+    public void instantiateListOfDates() {
         daysInJanuary = new ArrayList<>();
         daysInFebruary = new ArrayList<>();
         daysInMarch = new ArrayList<>();
@@ -77,7 +77,7 @@ public class CalendarApp {
 
     // EFFECTS: runs nCal application
     public CalendarApp() {
-        instantiateListofDates();
+        instantiateListOfDates();
         createMonth(daysInJanuary, JANUARY);
         createMonth(daysInFebruary, FEBRUARY);
         createMonth(daysInMarch, MARCH);
@@ -409,7 +409,7 @@ public class CalendarApp {
             System.out.println("\tTodos: " + returnTodo(d.get(i)));
         }
         displayMonthMenu();
-        String command = null;
+        String command;
         command = input.next();
         processMonthCommand(command, d);
     }
