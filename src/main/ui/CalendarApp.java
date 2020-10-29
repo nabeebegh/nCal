@@ -263,7 +263,7 @@ public class CalendarApp {
         if (day <= (l.get(1).getMonth().getNumberOfDays()) && day >= 1) {
             System.out.println("Enter event name: ");
             String name = input.next();
-            System.out.println("Enter event time [24 hour format (0000-2399)]: ");
+            System.out.println("Enter event time [24 hour format (0000-2359)]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
             if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
@@ -288,7 +288,7 @@ public class CalendarApp {
         if (day <= (l.get(1).getMonth().getNumberOfDays()) && day >= 1) {
             System.out.println("Enter reminder name: ");
             String name = input.next();
-            System.out.println("Enter reminder time [24 hour format (0000-2399)]: ");
+            System.out.println("Enter reminder time [24 hour format (0000-2359)]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
             if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
@@ -313,7 +313,7 @@ public class CalendarApp {
         if (day <= (l.get(1).getMonth().getNumberOfDays()) && day >= 1) {
             System.out.println("Enter task name: ");
             String name = input.next();
-            System.out.println("Enter task time [24 hour format (0000-2399)]: ");
+            System.out.println("Enter task time [24 hour format (0000-2359)]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
             if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
