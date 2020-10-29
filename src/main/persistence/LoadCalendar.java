@@ -1,3 +1,13 @@
+/*
+ ~LoadCalendar.java~
+  Represents a reader that reads JSON representation of Date stored in save file
+
+  Citation:
+  Contents of this class were modeled based on the JsonReader class in
+  JsonSerializationDemo provided by CPSC 210 course at UBC. Permission was given
+  to model this reader after said class.
+*/
+
 package persistence;
 
 import java.io.IOException;
@@ -18,7 +28,9 @@ public class LoadCalendar {
         this.source = source;
     }
 
-
+    // EFFECTS: if error occurs in attempt to read data from file,
+    //          throw IOException
+    //          otherwise, reads Date from file and returns it;
     public Date read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
@@ -36,6 +48,7 @@ public class LoadCalendar {
         return contentBuilder.toString();
     }
 
+    // EFFECTS: parses Date object for JSON object and returns it
     private Date parseDate(JSONObject jsonObject) {
         JSONObject monthJson = jsonObject.getJSONObject("month");
         String name = monthJson.getString("month");
@@ -48,30 +61,38 @@ public class LoadCalendar {
         return d;
     }
 
+    // MODIFIES: d
+    // EFFECTS: parses eventList from JSON object and adds them to Date object
     private void addEventList(Date d, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("events");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addEvent(d, nextThingy);
+            JSONObject nextEvent = (JSONObject) json;
+            addEvent(d, nextEvent);
         }
     }
 
+    // MODIFIES: d
+    // EFFECTS: parses reminderList from JSON object and adds them to Date object
     private void addReminderList(Date d, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("reminders");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addReminder(d, nextThingy);
+            JSONObject nextReminder = (JSONObject) json;
+            addReminder(d, nextReminder);
         }
     }
 
+    // MODIFIES: d
+    // EFFECTS: parses todoList from JSON object and adds them to Date object
     private void addTodoList(Date d, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("todos");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addTodo(d, nextThingy);
+            JSONObject nextTodo = (JSONObject) json;
+            addTodo(d, nextTodo);
         }
     }
 
+    // MODIFIES: d
+    // EFFECTS: parses event objects in eventList and adds them to Date object
     private void addEvent(Date d, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int time = jsonObject.getInt("time");
@@ -79,6 +100,8 @@ public class LoadCalendar {
         d.addEvent(e);
     }
 
+    // MODIFIES: d
+    // EFFECTS: parses reminder objects in reminderList and adds them to Date object
     private void addReminder(Date d, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int time = jsonObject.getInt("time");
@@ -86,6 +109,8 @@ public class LoadCalendar {
         d.addReminder(r);
     }
 
+    // MODIFIES: d
+    // EFFECTS: parses To-do objects in todoList and adds them to Date object
     private void addTodo(Date d, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int time = jsonObject.getInt("time");

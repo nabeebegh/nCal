@@ -232,6 +232,23 @@ public class CalendarApp {
         }
     }
 
+    // EFFECTS: processes command and forwards user to specified month function
+    public void processMonthCommand(String command, List<Date> l) {
+        if (command.equals("ae")) {
+            ae(l);
+        } else if (command.equals("ar")) {
+            ar(l);
+        } else if (command.equals("at")) {
+            at(l);
+        } else if (command.equals("re")) {
+            re(l);
+        } else if (command.equals("rr")) {
+            rr(l);
+        } else if (command.equals("rt")) {
+            rt(l);
+        }
+    }
+
     // MODIFIES: this, List<Date> l
     // EFFECTS: adds an event for a given date in the list of days in the month
     public void ae(List<Date> l) {
@@ -241,7 +258,7 @@ public class CalendarApp {
         if (day <= (l.get(1).getMonth().getNumberOfDays()) && day >= 1) {
             System.out.println("Enter event name: ");
             String name = input.next();
-            System.out.println("Enter event time [24 hour format]: ");
+            System.out.println("Enter event time [24 hour format (0000-2399)]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
             if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
@@ -266,7 +283,7 @@ public class CalendarApp {
         if (day <= (l.get(1).getMonth().getNumberOfDays()) && day >= 1) {
             System.out.println("Enter reminder name: ");
             String name = input.next();
-            System.out.println("Enter reminder time [24 hour format]: ");
+            System.out.println("Enter reminder time [24 hour format (0000-2399)]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
             if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
@@ -291,7 +308,7 @@ public class CalendarApp {
         if (day <= (l.get(1).getMonth().getNumberOfDays()) && day >= 1) {
             System.out.println("Enter task name: ");
             String name = input.next();
-            System.out.println("Enter task time [24 hour format]: ");
+            System.out.println("Enter task time [24 hour format (0000-2399)]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
             if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
@@ -373,23 +390,6 @@ public class CalendarApp {
             } else {
                 System.out.println("Specified task does not exist. Please try again.");
             }
-        }
-    }
-
-    // EFFECTS: processes command and forwards user to specified month function
-    public void processMonthCommand(String command, List<Date> l) {
-        if (command.equals("ae")) {
-            ae(l);
-        } else if (command.equals("ar")) {
-            ar(l);
-        } else if (command.equals("at")) {
-            at(l);
-        } else if (command.equals("re")) {
-            re(l);
-        } else if (command.equals("rr")) {
-            rr(l);
-        } else if (command.equals("rt")) {
-            rt(l);
         }
     }
 
