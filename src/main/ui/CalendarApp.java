@@ -70,130 +70,6 @@ public class CalendarApp {
         }
     }
 
-
-
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInJanuary for correct amount of days in month.
-//    public void createJanuary() {
-//        daysInJanuary = new ArrayList<>();
-//        for (int i = 1; i <= JANUARY.getNumberOfDays(); i++) {
-//            Date date = new Date(JANUARY, i);
-//            daysInJanuary.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInFebruary for correct amount of days in month.
-//    public void createFebruary() {
-//        daysInFebruary = new ArrayList<>();
-//        for (int i = 1; i <= FEBRUARY.getNumberOfDays(); i++) {
-//            Date date = new Date(FEBRUARY, i);
-//            daysInFebruary.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInMarch for correct amount of days in month.
-//    public void createMarch() {
-//        daysInMarch = new ArrayList<>();
-//        for (int i = 1; i <= MARCH.getNumberOfDays(); i++) {
-//            Date date = new Date(MARCH, i);
-//            daysInMarch.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInApril for correct amount of days in month.
-//    public void createApril() {
-//        daysInApril = new ArrayList<>();
-//        for (int i = 1; i <= APRIL.getNumberOfDays(); i++) {
-//            Date date = new Date(APRIL, i);
-//            daysInApril.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInMay for correct amount of days in month.
-//    public void createMay() {
-//        daysInMay = new ArrayList<>();
-//        for (int i = 1; i <= MAY.getNumberOfDays(); i++) {
-//            Date date = new Date(MAY, i);
-//            daysInMay.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInJune for correct amount of days in month.
-//    public void createJune() {
-//        daysInJune = new ArrayList<>();
-//        for (int i = 1; i <= JUNE.getNumberOfDays(); i++) {
-//            Date date = new Date(JUNE, i);
-//            daysInJune.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInJuly for correct amount of days in month.
-//    public void createJuly() {
-//        daysInJuly = new ArrayList<>();
-//        for (int i = 1; i <= JULY.getNumberOfDays(); i++) {
-//            Date date = new Date(JULY, i);
-//            daysInJuly.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInAugust for correct amount of days in month.
-//    public void createAugust() {
-//        daysInAugust = new ArrayList<>();
-//        for (int i = 1; i <= AUGUST.getNumberOfDays(); i++) {
-//            Date date = new Date(AUGUST, i);
-//            daysInAugust.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInSeptember for correct amount of days in month.
-//    public void createSeptember() {
-//        daysInSeptember = new ArrayList<>();
-//        for (int i = 1; i <= SEPTEMBER.getNumberOfDays(); i++) {
-//            Date date = new Date(SEPTEMBER, i);
-//            daysInSeptember.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInOctober for correct amount of days in month.
-//    public void createOctober() {
-//        daysInOctober = new ArrayList<>();
-//        for (int i = 1; i <= OCTOBER.getNumberOfDays(); i++) {
-//            Date date = new Date(OCTOBER, i);
-//            daysInOctober.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInNovember for correct amount of days in month.
-//    public void createNovember() {
-//        daysInNovember = new ArrayList<>();
-//        for (int i = 1; i <= NOVEMBER.getNumberOfDays(); i++) {
-//            Date date = new Date(NOVEMBER, i);
-//            daysInNovember.add(date);
-//        }
-//    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: creates a list of Dates in daysInDecember for correct amount of days in month.
-//    public void createDecember() {
-//        daysInDecember = new ArrayList<>();
-//        for (int i = 1; i <= DECEMBER.getNumberOfDays(); i++) {
-//            Date date = new Date(DECEMBER, i);
-//            daysInDecember.add(date);
-//        }
-//    }
-
-
-
     // EFFECTS: runs nCal application
     public CalendarApp() {
         instantiateListofDates();
@@ -332,6 +208,11 @@ public class CalendarApp {
         }
     }
 
+    // EFFECTS: returns amount of digits in some integer i
+    public int numLength(int i) {
+        return String.valueOf(i).length();
+    }
+
     // EFFECTS: processes user input, and prints chosen month
     public void processCommandContinued(String command) {
         if (command.equals("au")) {
@@ -363,9 +244,13 @@ public class CalendarApp {
             System.out.println("Enter event time [24 hour format]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
-            Event event = new Event(name, time);
-            l.get(day - 1).addEvent(event);
-            System.out.println("Event has been added.");
+            if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
+                System.out.println("Please enter correct time.");
+            } else {
+                Event event = new Event(name, time);
+                l.get(day - 1).addEvent(event);
+                System.out.println("Event has been added.");
+            }
         } else {
             System.out.println("Please choose a correct day!");
             ae(l);
@@ -384,9 +269,13 @@ public class CalendarApp {
             System.out.println("Enter reminder time [24 hour format]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
-            Reminder reminder = new Reminder(name, time);
-            l.get(day - 1).addReminder(reminder);
-            System.out.println("Reminder has been added.");
+            if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
+                System.out.println("Please enter correct time.");
+            } else {
+                Reminder reminder = new Reminder(name, time);
+                l.get(day - 1).addReminder(reminder);
+                System.out.println("Reminder has been added.");
+            }
         } else {
             System.out.println("Please choose a correct day!");
             ar(l);
@@ -405,9 +294,13 @@ public class CalendarApp {
             System.out.println("Enter task time [24 hour format]: ");
             String timeString = input.next();
             int time = Integer.parseInt(timeString);
-            Todo todo = new Todo(name, time);
-            l.get(day - 1).addTodo(todo);
-            System.out.println("Task has been added.");
+            if (!(time > 0 && time < 2400 && numLength(time) == 4)) {
+                System.out.println("Please enter correct time.");
+            } else {
+                Todo todo = new Todo(name, time);
+                l.get(day - 1).addTodo(todo);
+                System.out.println("Task has been added.");
+            }
         } else {
             System.out.println("Please choose a correct day!");
             at(l);
@@ -500,6 +393,7 @@ public class CalendarApp {
         }
     }
 
+    // EFFECTS: prints month, along with its events, reminders, and todos for each day in the month.
     public void printMonth(List<Date> d, String str) {
         System.out.println("-------------------" + str + "-------------------");
         for (int i = 0; i <= (d.size() - 1); i++) {
@@ -515,10 +409,12 @@ public class CalendarApp {
         processMonthCommand(command, d);
     }
 
+    // EFFECTS: returns save file link for given month and specific day of the month
     public String writeFileLink(String a, int b) {
         return ("./data/" + a + "/" + b + ".json");
     }
 
+    // EFFECTS: saves all months to JSON save files
     public void saveAllMonths() {
         saveMonth(daysInJanuary, "jan");
         saveMonth(daysInFebruary, "feb");
@@ -535,6 +431,7 @@ public class CalendarApp {
         System.out.println("Calendar has been saved.");
     }
 
+    // EFFECTS: loads all months from JSON save files
     public void loadAllMonths() {
         loadMonth(daysInJanuary, "jan");
         loadMonth(daysInFebruary, "feb");
@@ -551,6 +448,8 @@ public class CalendarApp {
         System.out.println("Previous save file has been load to calendar.");
     }
 
+    // EFFECTS: load each date object for specified month from list of dates from their respective
+    //          JSON save files
     public void loadMonth(List<Date> l, String str) {
         for (int i = 0; i < l.size(); i++) {
             loadCalendar = new LoadCalendar(writeFileLink(str, (i + 1)));
@@ -565,6 +464,8 @@ public class CalendarApp {
         }
     }
 
+    // EFFECTS: save each date object for specified month from list of dates to their respective
+    //          JSON save files
     public void saveMonth(List<Date> d, String str) {
         for (int i = 0; i < d.size(); i++) {
             saveCalendar = new SaveCalendar(writeFileLink(str, (i + 1)));
