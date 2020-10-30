@@ -1,14 +1,14 @@
-/*
- ~DateTest.java~
-  The class tests all the methods in Date.java
-*/
-
 package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/*
+ ~DateTest.java~
+  The class tests all the methods in Date.java
+*/
 
 public class DateTest {
 

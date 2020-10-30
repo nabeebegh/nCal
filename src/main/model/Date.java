@@ -1,9 +1,3 @@
-/*
- ~Date.java~
-  The class which constructs a Date object which stores the month, day, and
-  various user entries of types Event, Reminds, and TodoTask.
-*/
-
 package model;
 
 import org.json.JSONArray;
@@ -12,15 +6,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Date  {
+/*
+ ~Date.java~
+  The class which constructs a Date object which stores the month, day, and
+  various user entries of types Event, Reminds, and TodoTask.
+*/
+
+public class Date {
 
     // FIELDS
     private Month month;
     private int day;
     private List<Event> eventList;        // user entry of events
     private List<Reminder> reminderList;  // user entry of reminders
-    private List<Todo> todoList;      // user entry of to-do list tasks
+    private List<Todo> todoList;          // user entry of to-do list tasks
 
+    // REQUIRES: 1 <= day <= Maximum Days in given month
     // EFFECTS: Constructs a day with a month, day, and empty lists for user entries.
     public Date(Month month, int day) {
         this.month = month;
@@ -114,7 +115,7 @@ public class Date  {
         return json;
     }
 
-    // EFFECTS: returns Event objects in eventList as a JSONArray
+    // EFFECTS: returns eventList as a JSONArray
     private JSONArray eventsToJsonArray() {
         JSONArray jsonArray = new JSONArray();
 
@@ -124,7 +125,7 @@ public class Date  {
         return jsonArray;
     }
 
-    // EFFECTS: returns Reminder objects in eventList as a JSONArray
+    // EFFECTS: returns eventList as a JSONArray
     private JSONArray remindersToJsonArray() {
         JSONArray jsonArray = new JSONArray();
 
@@ -134,7 +135,7 @@ public class Date  {
         return jsonArray;
     }
 
-    // EFFECTS: returns To-do objects in eventList as a JSONArray
+    // EFFECTS: returns todoList as a JSONArray
     private JSONArray todosToJsonArray() {
         JSONArray jsonArray = new JSONArray();
         for (Todo t : todoList) {

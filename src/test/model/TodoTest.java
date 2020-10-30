@@ -1,14 +1,16 @@
-/*
- ~TodoTest.java~
-  The class tests all the methods in To-do.java
-*/
-
 package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/*
+ ~TodoTest.java~
+  The class tests all the methods in To-do.java
+*/
+
+
 
 public class TodoTest {
 

@@ -1,8 +1,3 @@
-/*
- ~CalendarApp.java~
-  The class which compiles the nCal console application.
-*/
-
 package ui;
 
 import model.*;
@@ -14,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// nCal application
+/*
+ ~CalendarApp.java~
+  The class which compiles the nCal console application.
+*/
+
 public class CalendarApp {
 
     // CONSTANTS
@@ -30,7 +29,7 @@ public class CalendarApp {
     private static final Month OCTOBER = new Month("October");
     private static final Month NOVEMBER = new Month("November");
     private static final Month DECEMBER = new Month("December");
-    private static final String JSON_STORE = "./data/";
+    private static final String JSON = "./data/";
 
     // FIELDS
     private Scanner input;
@@ -158,7 +157,7 @@ public class CalendarApp {
     public String returnEvent(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getEventList().size() - 1); i++) {
-            string = string + ((date.getEventList().get(i).getEventName()) + " @ "
+            string = string + "(" + (i + 1) + ") " + ((date.getEventList().get(i).getEventName()) + " @ "
                     + (date.getEventList().get(i).getTime())
                     + ", ");
         }
@@ -169,7 +168,7 @@ public class CalendarApp {
     public String returnReminder(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getReminderList().size() - 1); i++) {
-            string = string + ((date.getReminderList().get(i).getReminderName()) + " @ "
+            string = string + "(" + (i + 1) + ") " + ((date.getReminderList().get(i).getReminderName()) + " @ "
                     + (date.getReminderList().get(i).getTime())
                     + ", ");
         }
@@ -180,7 +179,7 @@ public class CalendarApp {
     public String returnTodo(Date date) {
         String string = "";
         for (int i = 0; (i <= date.getTodoList().size() - 1); i++) {
-            string = string + ((date.getTodoList().get(i).getTodoName()) + " @ "
+            string = string + "(" + (i + 1) + ") " + ((date.getTodoList().get(i).getTodoName()) + " @ "
                     + (date.getTodoList().get(i).getTime())
                     + ", ");
         }
@@ -211,11 +210,6 @@ public class CalendarApp {
         } else {
             processCommandContinued(command);
         }
-    }
-
-    // EFFECTS: returns amount of digits in some integer i
-    public int numLength(int i) {
-        return String.valueOf(i).length();
     }
 
     // EFFECTS: processes user input, and prints chosen month
@@ -252,6 +246,11 @@ public class CalendarApp {
         } else if (command.equals("rt")) {
             rt(l);
         }
+    }
+
+    // EFFECTS: returns amount of digits in some integer i
+    public int numLength(int i) {
+        return String.valueOf(i).length();
     }
 
     // MODIFIES: this, List<Date> l
@@ -415,7 +414,7 @@ public class CalendarApp {
     }
 
     // EFFECTS: returns save file link for given month and specific day of the month
-    public String writeFileLink(String a, int b) {
+    public String saveFileLink(String a, int b) {
         return ("./data/" + a + "/" + b + ".json");
     }
 
@@ -457,14 +456,14 @@ public class CalendarApp {
     //          JSON save files
     public void loadMonth(List<Date> l, String str) {
         for (int i = 0; i < l.size(); i++) {
-            loadCalendar = new LoadCalendar(writeFileLink(str, (i + 1)));
+            loadCalendar = new LoadCalendar(saveFileLink(str, (i + 1)));
             try {
                 Date d = l.get(i);
                 d = loadCalendar.read();
                 l.remove(0);
                 l.add(d);
             } catch (IOException e) {
-                System.out.println("Unable to load data from: " + JSON_STORE + "/" + str);
+                System.out.println("Unable to load data from: " + JSON + "/" + str);
             }
         }
     }
@@ -473,13 +472,13 @@ public class CalendarApp {
     //          JSON save files
     public void saveMonth(List<Date> d, String str) {
         for (int i = 0; i < d.size(); i++) {
-            saveCalendar = new SaveCalendar(writeFileLink(str, (i + 1)));
+            saveCalendar = new SaveCalendar(saveFileLink(str, (i + 1)));
             try {
                 saveCalendar.open();
                 saveCalendar.write(d.get(i));
                 saveCalendar.close();
             } catch (FileNotFoundException e) {
-                System.out.println("Unable to write date to: " + JSON_STORE + "/" + str);
+                System.out.println("Unable to write date to: " + JSON + "/" + str);
             }
         }
     }

@@ -9,6 +9,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/*
+ ~LoadCalendarTest.java~
+  The class tests all the methods in LoadCalendarTest.java
+*/
+
 public class LoadCalendarTest extends JsonTest {
 
     @Test

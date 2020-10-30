@@ -1,13 +1,12 @@
+package model;
+
+import org.json.JSONObject;
+
 /*
  ~To-do.java~
   The class which constructs an To-do object which stores the time of the to-do
   and its name.
 */
-
-
-package model;
-
-import org.json.JSONObject;
 
 public class Todo {
 
@@ -16,6 +15,7 @@ public class Todo {
     private int time; // In 24HR format
 
     // REQUIRES: 0000 <= time <= 2359
+    // EFFECTS:  constructs To-do with given name and time
     public Todo(String eventName, int time) {
         this.taskName = eventName;
         this.time = time;

@@ -1,12 +1,12 @@
+package model;
+
+import org.json.JSONObject;
+
 /*
  ~Month.java~
   The class which constructs an empty Month object and then
   allocates a correct amount of days to a month.
 */
-
-package model;
-
-import org.json.JSONObject;
 
 public class Month {
     // CONSTANTS

@@ -4,7 +4,7 @@
 
   Citation:
   Contents of this class were copied from JsonWriter class in JsonSerializationDemo
-  provided by CPSC 210 course at UBC. Permission was given to model this reader
+  provided by CPSC 210 course at UBC. Permission was given to model this writer
   after said class.
 */
 

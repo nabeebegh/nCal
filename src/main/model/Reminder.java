@@ -1,12 +1,12 @@
+package model;
+
+import org.json.JSONObject;
+
 /*
  ~Event.java~
   The class which constructs an Reminder object which stores the time of the reminder
   and its name.
 */
-
-package model;
-
-import org.json.JSONObject;
 
 public class Reminder {
 
@@ -15,6 +15,7 @@ public class Reminder {
     private int time; // In 24HR format
 
     // REQUIRES: 0000 <= time <= 2359
+    // EFFECTS: constructs Reminder with given name and time
     public Reminder(String eventName, int time) {
         this.reminderName = eventName;
         this.time = time;

@@ -1,13 +1,12 @@
+package model;
+
+import org.json.JSONObject;
+
 /*
  ~Event.java~
   The class which constructs an Event object which stores the time of the event
   and its name.
 */
-
-
-package model;
-
-import org.json.JSONObject;
 
 public class Event {
 
@@ -16,7 +15,7 @@ public class Event {
     private int time; // In 24HR format
 
     // REQUIRES: 0000 <= time <= 2359
-    // EFFECTS: constructs Event object with given name and time
+    // EFFECTS:  constructs Event with given name and time
     public Event(String eventName, int time) {
         this.eventName = eventName;
         this.time = time;

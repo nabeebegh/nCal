@@ -1,13 +1,3 @@
-/*
- ~LoadCalendar.java~
-  Represents a reader that reads JSON representation of Date stored in save file
-
-  Citation:
-  Contents of this class were modeled based on the JsonReader class in
-  JsonSerializationDemo provided by CPSC 210 course at UBC. Permission was given
-  to model this reader after said class.
-*/
-
 package persistence;
 
 import java.io.IOException;
@@ -19,6 +9,16 @@ import java.util.stream.Stream;
 import org.json.*;
 
 import model.*;
+
+/*
+ ~LoadCalendar.java~
+  Represents a reader that reads JSON representation of Date stored in save file
+
+  Citation:
+  Contents of this class were modeled based on the JsonReader class in
+  JsonSerializationDemo provided by CPSC 210 course at UBC. Permission was given
+  to model this reader after said class.
+*/
 
 public class LoadCalendar {
     private String source;

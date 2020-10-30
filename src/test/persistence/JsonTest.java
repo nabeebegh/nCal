@@ -1,10 +1,3 @@
-/*
- ~JsonTest.java~
-  This abstract class contains implementation for testing method(s) that are used in
-  LoadCalendarTest and SaveCalendarTest. Both LoadCalendarTest and SaveCalendarTest extend
-  JsonTest.
-*/
-
 package persistence;
 
 import model.*;
@@ -12,6 +5,13 @@ import model.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/*
+ ~JsonTest.java~
+  This abstract class contains implementation for testing method(s) that are used in
+  LoadCalendarTest and SaveCalendarTest. Both LoadCalendarTest and SaveCalendarTest extend
+  JsonTest.
+*/
 
 public abstract class JsonTest {
     protected void checkDate(int day, Month month, List<Event> eventList, List<Reminder> reminderList,
