@@ -24,9 +24,7 @@ The following are "User stories" that describe how someone can use **nCal** to p
 - "*As a user, I want to be able to add reminders to my calendar.*"
 - "*As a user, I want to be able to add todo-list tasks to my calendar.*"
 - "*As a user, I want to be able to view the calendar and see my entries.*"
-- "*As a user I want to be able to set the time and date for when I get reminded about my entries.*"
-- "*As a user I want to be able to edit an entry on my calendar.*"
-- "*As a user I want to be able to delete an entry from the calendar*"
+- "*As a user, I want to be able to delete an entry from the calendar*"
 - "*As a user, I want to be able to save my calendar and view it later*"
 - "*As a user, I want to be able to load a previously saved calendar*"
 

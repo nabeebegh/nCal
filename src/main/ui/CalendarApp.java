@@ -234,17 +234,17 @@ public class CalendarApp {
     // EFFECTS: processes command and forwards user to specified month function
     public void processMonthCommand(String command, List<Date> l) {
         if (command.equals("ae")) {
-            ae(l);
+            addEvent(l);
         } else if (command.equals("ar")) {
-            ar(l);
+            addReminder(l);
         } else if (command.equals("at")) {
-            at(l);
+            addTodo(l);
         } else if (command.equals("re")) {
-            re(l);
+            removeEvent(l);
         } else if (command.equals("rr")) {
-            rr(l);
+            removeReminder(l);
         } else if (command.equals("rt")) {
-            rt(l);
+            removeTodo(l);
         }
     }
 
@@ -255,7 +255,7 @@ public class CalendarApp {
 
     // MODIFIES: this, List<Date> l
     // EFFECTS: adds an event for a given date in the list of days in the month
-    public void ae(List<Date> l) {
+    public void addEvent(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
         int day = Integer.parseInt(dayString);
@@ -274,13 +274,13 @@ public class CalendarApp {
             }
         } else {
             System.out.println("Please choose a correct day!");
-            ae(l);
+            addEvent(l);
         }
     }
 
     // MODIFIES: this, List<Date> l
     // EFFECTS: adds a reminder for a given date in the list of days in the month
-    public void ar(List<Date> l) {
+    public void addReminder(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
         int day = Integer.parseInt(dayString);
@@ -299,13 +299,13 @@ public class CalendarApp {
             }
         } else {
             System.out.println("Please choose a correct day!");
-            ar(l);
+            addReminder(l);
         }
     }
 
     // MODIFIES: this, List<Date> l
     // EFFECTS: adds a task for a given date in the list of days in the month
-    public void at(List<Date> l) {
+    public void addTodo(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
         int day = Integer.parseInt(dayString);
@@ -324,13 +324,13 @@ public class CalendarApp {
             }
         } else {
             System.out.println("Please choose a correct day!");
-            at(l);
+            addTodo(l);
         }
     }
 
     // MODIFIES: this, List<Date> l
     // EFFECTS: removes an event from given date in the list of days in the month
-    public void re(List<Date> l) {
+    public void removeEvent(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
         int day = Integer.parseInt(dayString);
@@ -353,7 +353,7 @@ public class CalendarApp {
 
     // MODIFIES: this, List<Date> l
     // EFFECTS: removes a reminder from a given date in the list of days in the month
-    public void rr(List<Date> l) {
+    public void removeReminder(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
         int day = Integer.parseInt(dayString);
@@ -376,7 +376,7 @@ public class CalendarApp {
 
     // MODIFIES: this, List<Date> l
     // EFFECTS: removes a task from a given date in the list of days in the month
-    public void rt(List<Date> l) {
+    public void removeTodo(List<Date> l) {
         System.out.println("Choose a day [1 - " + (l.get(1).getMonth().getNumberOfDays()) + "]");
         String dayString = input.next();
         int day = Integer.parseInt(dayString);
@@ -452,6 +452,7 @@ public class CalendarApp {
         System.out.println("Previous save file has been load to calendar.");
     }
 
+    // MODIFIES: l
     // EFFECTS: load each date object for specified month from list of dates from their respective
     //          JSON save files
     public void loadMonth(List<Date> l, String str) {
