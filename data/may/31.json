@@ -1,8 +1,5 @@
 {
-    "reminders": [{
-        "name": "test",
-        "time": 1400
-    }],
+    "reminders": [],
     "month": {"month": "May"},
     "todos": [],
     "day": 31,

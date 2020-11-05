@@ -3,8 +3,5 @@
     "month": {"month": "January"},
     "todos": [],
     "day": 31,
-    "events": [{
-        "name": "test",
-        "time": 1400
-    }]
+    "events": []
 }

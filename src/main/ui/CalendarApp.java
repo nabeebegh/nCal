@@ -89,7 +89,7 @@ public class CalendarApp {
         createMonth(daysInOctober, OCTOBER);
         createMonth(daysInNovember, NOVEMBER);
         createMonth(daysInDecember, DECEMBER);
-        runCalendar();
+//        runCalendar();
     }
 
     // MODIFIES: this
