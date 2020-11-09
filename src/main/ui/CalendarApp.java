@@ -48,7 +48,56 @@ public class CalendarApp {
     private LoadCalendar loadCalendar;
     private SaveCalendar saveCalendar;
 
+    // GETTERS
+    public List<Date> getDaysInJanuary() {
+        return daysInJanuary;
+    }
 
+    public List<Date> getDaysInFebruary() {
+        return daysInFebruary;
+    }
+
+    public List<Date> getDaysInMarch() {
+        return daysInMarch;
+    }
+
+    public List<Date> getDaysInApril() {
+        return daysInApril;
+    }
+
+    public List<Date> getDaysInMay() {
+        return daysInMay;
+    }
+
+    public List<Date> getDaysInJune() {
+        return daysInJune;
+    }
+
+    public List<Date> getDaysInJuly() {
+        return daysInJuly;
+    }
+
+    public List<Date> getDaysInAugust() {
+        return daysInAugust;
+    }
+
+    public List<Date> getDaysInSeptember() {
+        return daysInSeptember;
+    }
+
+    public List<Date> getDaysInOctober() {
+        return daysInOctober;
+    }
+
+    public List<Date> getDaysInNovember() {
+        return daysInNovember;
+    }
+
+    public List<Date> getDaysInDecember() {
+        return daysInDecember;
+    }
+
+    // EFFECTS: instantiates list of dates objects
     public void instantiateListOfDates() {
         daysInJanuary = new ArrayList<>();
         daysInFebruary = new ArrayList<>();

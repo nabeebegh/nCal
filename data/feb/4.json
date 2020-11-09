@@ -1,7 +1,46 @@
 {
-    "reminders": [],
-    "month": {"month": "February"},
-    "todos": [],
-    "day": 4,
-    "events": []
+  "reminders": [{
+    "name": "test",
+    "time": 1400
+  }],
+  "month": {"month": "January"},
+  "todos": [{
+    "name": "hello",
+    "time": 1500
+  }],
+  "day": 4,
+  "events": [
+    {
+      "name": "test",
+      "time": 1200
+    },
+    {
+      "name": "test",
+      "time": 1900
+    },
+    {
+      "name": "test",
+      "time": 1900
+    },
+    {
+      "name": "test",
+      "time": 1900
+    },
+    {
+      "name": "test",
+      "time": 1900
+    },
+    {
+      "name": "test",
+      "time": 1900
+    },
+    {
+      "name": "test",
+      "time": 1900
+    },
+    {
+      "name": "test",
+      "time": 1900
+    }
+  ]
 }
