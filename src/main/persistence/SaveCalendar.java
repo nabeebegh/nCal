@@ -1,3 +1,9 @@
+package persistence;
+
+import model.*;
+import org.json.JSONObject;
+import java.io.*;
+
 /*
  ~SaveCalendar.java~
   Represents a writer that writes JSON representation of Date to a save file
@@ -7,12 +13,6 @@
   provided by CPSC 210 course at UBC. Permission was given to model this writer
   after said class.
 */
-
-package persistence;
-
-import model.*;
-import org.json.JSONObject;
-import java.io.*;
 
 public class SaveCalendar {
     private static final int TAB = 4;
