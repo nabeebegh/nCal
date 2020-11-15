@@ -33,69 +33,20 @@ public class CalendarApp {
 
     // FIELDS
     private Scanner input;
-    private List<Date> daysInJanuary;
-    private List<Date> daysInFebruary;
-    private List<Date> daysInMarch;
-    private List<Date> daysInApril;
-    private List<Date> daysInMay;
-    private List<Date> daysInJune;
-    private List<Date> daysInJuly;
-    private List<Date> daysInAugust;
-    private List<Date> daysInSeptember;
-    private List<Date> daysInOctober;
-    private List<Date> daysInNovember;
-    private List<Date> daysInDecember;
+    protected List<Date> daysInJanuary;
+    protected List<Date> daysInFebruary;
+    protected List<Date> daysInMarch;
+    protected List<Date> daysInApril;
+    protected List<Date> daysInMay;
+    protected List<Date> daysInJune;
+    protected List<Date> daysInJuly;
+    protected List<Date> daysInAugust;
+    protected List<Date> daysInSeptember;
+    protected List<Date> daysInOctober;
+    protected List<Date> daysInNovember;
+    protected List<Date> daysInDecember;
     private LoadCalendar loadCalendar;
     private SaveCalendar saveCalendar;
-
-    // GETTERS
-    public List<Date> getDaysInJanuary() {
-        return daysInJanuary;
-    }
-
-    public List<Date> getDaysInFebruary() {
-        return daysInFebruary;
-    }
-
-    public List<Date> getDaysInMarch() {
-        return daysInMarch;
-    }
-
-    public List<Date> getDaysInApril() {
-        return daysInApril;
-    }
-
-    public List<Date> getDaysInMay() {
-        return daysInMay;
-    }
-
-    public List<Date> getDaysInJune() {
-        return daysInJune;
-    }
-
-    public List<Date> getDaysInJuly() {
-        return daysInJuly;
-    }
-
-    public List<Date> getDaysInAugust() {
-        return daysInAugust;
-    }
-
-    public List<Date> getDaysInSeptember() {
-        return daysInSeptember;
-    }
-
-    public List<Date> getDaysInOctober() {
-        return daysInOctober;
-    }
-
-    public List<Date> getDaysInNovember() {
-        return daysInNovember;
-    }
-
-    public List<Date> getDaysInDecember() {
-        return daysInDecember;
-    }
 
     // EFFECTS: instantiates list of dates objects
     public void instantiateListOfDates() {
@@ -481,7 +432,7 @@ public class CalendarApp {
         saveMonth(daysInOctober, "oct");
         saveMonth(daysInNovember, "nov");
         saveMonth(daysInDecember, "dec");
-        System.out.println("Calendar has been saved.");
+//        System.out.println("Calendar has been saved.");
     }
 
     // EFFECTS: loads all months from JSON save files
@@ -498,7 +449,7 @@ public class CalendarApp {
         loadMonth(daysInOctober, "oct");
         loadMonth(daysInNovember, "nov");
         loadMonth(daysInDecember, "dec");
-        System.out.println("Previous save file has been load to calendar.");
+//        System.out.println("Previous save file has been load to calendar.");
     }
 
     // MODIFIES: l

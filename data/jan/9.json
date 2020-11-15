@@ -1,22 +1,7 @@
 {
-    "reminders": [{
-        "name": "test",
-        "time": 1400
-    }],
+    "reminders": [],
     "month": {"month": "January"},
-    "todos": [{
-        "name": "hello",
-        "time": 1500
-    }],
+    "todos": [],
     "day": 9,
-    "events": [
-        {
-            "name": "test",
-            "time": 1200
-        },
-        {
-            "name": "test",
-            "time": 1900
-        }
-    ]
+    "events": []
 }

@@ -1,19 +1,25 @@
 package ui;
 
-import model.Date;
+import model.*;
+import model.Event;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.font.TextAttribute;
 import java.util.List;
+import java.util.Map;
 
 /*
  ~RunCalendarApp.java~
   Class which runs nCal for end user.
 */
 
-public class RunCalendarApp extends JFrame {
+public class RunCalendarApp extends CalendarApp {
 
     // CONSTANTS
     private static final int MAIN_MENU_WIDTH = 300;
@@ -22,12 +28,16 @@ public class RunCalendarApp extends JFrame {
     private static final int VIEW_MONTHS_WIDTH = 210;
     private static final int VIEW_MONTHS_LENGTH = 415;
 
-    private static final int MONTH_WIDTH = 600;
-    private static final int MONTH_LENGTH = 505;
+    private static final int MONTH_WIDTH = 610;
+    private static final int MONTH_LENGTH = 640;
+
+    private static final int ADD_WIDTH = 600;
+    private static final int ADD_LENGTH = 145;
 
     // FIELDS
     private CalendarApp calendarApp;
-    private List<Date> listOfDays;
+    private String monthName;
+    private String action;
 
     DefaultListModel<String> eventList;
     DefaultListModel<String> reminderList;
@@ -44,6 +54,7 @@ public class RunCalendarApp extends JFrame {
     private JPanel mainMenu;
     private JPanel viewMonths;
     private JPanel monthPanel;
+    private JPanel addPanel;
 
     private JButton viewCalendar;
     private JButton saveCalendar;
@@ -70,6 +81,10 @@ public class RunCalendarApp extends JFrame {
     private JButton removeTodo;
     private JButton backButton;
     private JButton update;
+    private JButton enter;
+    private JButton returnToCalendar;
+    private JButton saveCalendarInViewMonth;
+    private JButton exitCalendarInViewMonth;
 
     private JLabel mainMenuText;
     private JLabel viewMonthsText;
@@ -78,12 +93,11 @@ public class RunCalendarApp extends JFrame {
     private JLabel eventText;
     private JLabel reminderText;
     private JLabel todoText;
+    private JLabel name;
+    private JLabel time;
 
-    private JScrollPane eventScroll;
-    private JScrollPane reminderScroll;
-    private JScrollPane todoScroll;
-
-    private String monthName;
+    private JTextField nameField;
+    private JTextField timeField;
 
     public RunCalendarApp() {
         calendarApp = new CalendarApp();
@@ -213,30 +227,49 @@ public class RunCalendarApp extends JFrame {
         viewMonthsEvents();
     }
 
+    public void viewCalendar(JButton button, String nameOfMonth, List<Date> l) {
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (nameOfMonth.equals("February")) {
+                    listOfDatesInFebruary();
+                } else if ((nameOfMonth.equals("January") || ((nameOfMonth.equals("March"))
+                        || ((nameOfMonth.equals("May")) || (nameOfMonth.equals("July") || (nameOfMonth.equals("August")
+                        || (nameOfMonth.equals("October") || (nameOfMonth.equals("December"))))))))) {
+                    listOfDatesMax();
+                } else {
+                    listOfDates();
+                }
+                buildCalendar(nameOfMonth, l);
+            }
+        });
+    }
+
     public void viewMonthsEvents() {
         returnToMainMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 switchWindow(viewMonths, mainMenu, BorderLayout.SOUTH, MAIN_MENU_WIDTH, MAIN_MENU_LENGTH);
             }
         });
-        january.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                listOfDatesMax();
-                monthName = "January";
-                listOfDays = calendarApp.getDaysInJanuary();
-                viewMonthPanel(1, listOfDays, "January");
-                switchWindow(viewMonths, monthPanel, BorderLayout.SOUTH, MONTH_WIDTH, MONTH_LENGTH);
-            }
-        });
-        february.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                listOfDatesInFebruary();
-                monthName = "February";
-                listOfDays = calendarApp.getDaysInFebruary();
-                viewMonthPanel(1, listOfDays, monthName);
-                switchWindow(viewMonths, monthPanel, BorderLayout.SOUTH, MONTH_WIDTH, MONTH_LENGTH);
-            }
-        });
+        viewCalendar(january, "January", calendarApp.daysInJanuary);
+        viewCalendar(february, "February", calendarApp.daysInFebruary);
+        viewCalendar(march, "March", calendarApp.daysInMarch);
+        viewCalendar(april, "April", calendarApp.daysInApril);
+        viewCalendar(may, "May", calendarApp.daysInMay);
+        viewCalendar(june, "June", calendarApp.daysInJune);
+        viewCalendar(july, "July", calendarApp.daysInJuly);
+        viewCalendar(august,"August", calendarApp.daysInAugust);
+        viewCalendar(september, "September", calendarApp.daysInSeptember);
+        viewCalendar(october, "October", calendarApp.daysInOctober);
+        viewCalendar(november, "November", calendarApp.daysInNovember);
+        viewCalendar(december,"December", calendarApp.daysInDecember);
+    }
+
+
+
+    public void buildCalendar(String str, List<Date> l) {
+        monthName = str;
+        viewMonthPanel(1, l, monthName);
+        switchWindow(viewMonths, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
     }
 
     public void listOfDatesMax() {
@@ -296,12 +329,34 @@ public class RunCalendarApp extends JFrame {
         todos = new JList(getTodos(day, l));
     }
 
+    public void addScrollBarToList(JList list, JPanel panel) {
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane listScrollbar = new JScrollPane();
+        listScrollbar.setViewportView(list);
+        list.setLayoutOrientation(JList.VERTICAL);
+        panel.add(listScrollbar);
+    }
+
     public void initializeViewMonthLabels(String str) {
         monthNameText = new JLabel(str);
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 15);
+        monthNameText.setBorder(border);
         monthPanelText = new JLabel("Select a day:");
         eventText = new JLabel("Events");
+        Font font = eventText.getFont();
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        eventText.setFont(font.deriveFont(attributes));
         reminderText = new JLabel("Reminder");
+        font = reminderText.getFont();
+        attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        reminderText.setFont(font.deriveFont(attributes));
         todoText = new JLabel("Todo");
+        font = todoText.getFont();
+        attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        todoText.setFont(font.deriveFont(attributes));
     }
 
     public void alignLabels() {
@@ -321,20 +376,23 @@ public class RunCalendarApp extends JFrame {
         initializeMonthPanelButtons();
         monthPanel = new JPanel(new BorderLayout());
         monthPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        monthPanel.setLayout(new GridLayout(6, 3));
+        monthPanel.setLayout(new GridLayout(6, 3, 5, 5));
         initializeViewMonthLabels(str);
         updateEntries(day, l);
         monthPanel.add(monthNameText);
-        monthPanel.add(monthPanelText);
         monthPanel.add(dates);
+        addButton(update, monthPanel);
         monthPanel.add(eventText);
         monthPanel.add(reminderText);
         monthPanel.add(todoText);
-        monthPanel.add(events);
-        monthPanel.add(reminders);
-        monthPanel.add(todos);
+        addScrollBarToList(events, monthPanel);
+        addScrollBarToList(reminders, monthPanel);
+        addScrollBarToList(todos, monthPanel);
         alignLabels();
         addButtonsToMonthPanel(monthPanel);
+        monthPanelEvents(l);
+        monthPanel.setPreferredSize(new Dimension(100,600));
+        addToCalendarPanel(l);
     }
 
     public void initializeMonthPanelButtons() {
@@ -345,7 +403,9 @@ public class RunCalendarApp extends JFrame {
         removeReminder = new JButton("Remove Reminder");
         removeTodo = new JButton("Remove Todo");
         backButton = new JButton("<< Month Selection");
-        update = new JButton("Update to selected date");
+        update = new JButton("Show selected date");
+        saveCalendarInViewMonth = new JButton("Save");
+        exitCalendarInViewMonth = new JButton("Quit");
     }
 
     public void addButtonsToMonthPanel(JPanel panel) {
@@ -355,17 +415,17 @@ public class RunCalendarApp extends JFrame {
         addButton(removeEvent, panel);
         addButton(removeReminder, panel);
         addButton(removeTodo, panel);
-        addButton(update, panel);
         addButton(backButton, panel);
-        monthPanelEvents();
+        addButton(saveCalendarInViewMonth, panel);
+        addButton(exitCalendarInViewMonth, panel);
     }
 
-    public void monthPanelEvents() {
+    public void monthPanelEvents(List<Date> l) {
         update.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int day = dates.getSelectedIndex() + 1;
-                viewMonthPanel(day, listOfDays, monthName);
-                switchWindow(monthPanel, monthPanel, BorderLayout.SOUTH, MONTH_WIDTH, MONTH_LENGTH);
+                viewMonthPanel(day, l, monthName);
+                switchWindow(monthPanel, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
             }
         });
         backButton.addActionListener(new ActionListener() {
@@ -373,6 +433,167 @@ public class RunCalendarApp extends JFrame {
                 switchWindow(monthPanel, viewMonths, BorderLayout.SOUTH, VIEW_MONTHS_WIDTH, VIEW_MONTHS_LENGTH);
             }
         });
+        addToCalendarEvent(addEvent, "e");
+        addToCalendarEvent(addReminder, "r");
+        addToCalendarEvent(addTodo, "t");
+        removeFromCalendarEvent(removeEvent, "e", l);
+        removeFromCalendarEvent(removeReminder, "r", l);
+        removeFromCalendarEvent(removeTodo, "t", l);
+        monthPanelEventsTwo();
+    }
+
+    public void monthPanelEventsTwo() {
+        saveCalendarInViewMonth.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveCalendar();
+            }
+        });
+        exitCalendarInViewMonth.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+    }
+
+    public void removeFromCalendarEvent(JButton button, String str, List<Date> l) {
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                removeFromCalendar(str, l);
+            }
+        });
+    }
+
+    public void removeFromCalendar(String str, List<Date> l) {
+        action = str;
+        if (action.equals("e")) {
+            l.get(dates.getSelectedIndex()).removeEvent(l.get(dates.getSelectedIndex()).getEventList().get(
+                    events.getSelectedIndex()));
+            viewMonthPanel(dates.getSelectedIndex() + 1, l, monthName);
+            switchWindow(monthPanel, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
+        } else if (action.equals("r")) {
+            l.get(dates.getSelectedIndex()).removeReminder(l.get(dates.getSelectedIndex()).getReminderList().get(
+                    reminders.getSelectedIndex()));
+            viewMonthPanel(dates.getSelectedIndex() + 1, l, monthName);
+            switchWindow(monthPanel, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
+        } else if (action.equals("t")) {
+            l.get(dates.getSelectedIndex()).removeTodo(l.get(dates.getSelectedIndex()).getTodoList().get(
+                    todos.getSelectedIndex()));
+            viewMonthPanel(dates.getSelectedIndex() + 1, l, monthName);
+            switchWindow(monthPanel, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
+        }
+    }
+
+    public void addToCalendarEvent(JButton button, String str) {
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                action = str;
+                switchWindow(monthPanel, addPanel, BorderLayout.SOUTH, ADD_WIDTH, ADD_LENGTH);
+            }
+        });
+    }
+
+    public void addToCalendarPanel(List<Date> l) {
+        addPanel = new JPanel(new GridLayout(3,2,5,5));
+        addPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        initializeAddToCalendarPanelLabels();
+        initializeAddToCalendarTextFields();
+        initializeAddToCalendarPanelButtons();
+        addPanel.add(name);
+        addPanel.add(nameField);
+        addPanel.add(time);
+        addPanel.add(timeField);
+        addPanel.add(enter);
+        addPanel.add(returnToCalendar);
+        addToCalendarPanelEvents(l);
+    }
+
+    public void addToCalendarPanelEvents(List<Date> l) {
+        returnToCalendar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                switchWindow(addPanel, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
+            }
+        });
+        enter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (addToCalendar(l)) {
+                    switchWindow(addPanel, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
+                }
+            }
+        });
+    }
+
+    public boolean addToCalendar(List<Date> l) {
+        if ((!(nameField.getText().equals("") && timeField.getText().equals(""))) && checkTime(timeField.getText())
+                && checkTimeFormat(timeField.getText())) {
+            if (action.equals("e")) {
+                int time = Integer.parseInt(timeField.getText());
+                Event e = new Event(nameField.getText(), time);
+                l.get(dates.getSelectedIndex()).addEvent(e);
+                viewMonthPanel(dates.getSelectedIndex() + 1, l, monthName);
+            } else if (action.equals("r")) {
+                int time = Integer.parseInt(timeField.getText());
+                Reminder r = new Reminder(nameField.getText(), time);
+                l.get(dates.getSelectedIndex()).addReminder(r);
+                viewMonthPanel(dates.getSelectedIndex() + 1, l, monthName);
+            } else if (action.equals("t")) {
+                int time = Integer.parseInt(timeField.getText());
+                Todo t = new Todo(nameField.getText(), time);
+                l.get(dates.getSelectedIndex()).addTodo(t);
+                viewMonthPanel(dates.getSelectedIndex() + 1, l, monthName);
+            }
+            return true;
+        } else {
+            timeField.setText("ERROR");
+            return false;
+        }
+    }
+
+    public boolean checkTime(String str) {
+        Boolean b;
+        try {
+            Integer.parseInt(str);
+            b = true;
+        } catch (Exception e) {
+            b = false;
+        }
+        return b;
+    }
+
+    public boolean checkTimeFormat(String str) {
+        Boolean b;
+        int timeLength = str.length();
+        try {
+            Integer.parseInt(str);
+        } catch (Exception e) {
+            return false;
+        }
+        int time = Integer.parseInt(str);
+        if ((timeLength != 4) || (time > 2359)) {
+            b = false;
+        } else {
+            b = true;
+        }
+        return b;
+    }
+
+    public void initializeAddToCalendarTextFields() {
+        nameField = new JTextField();
+        timeField = new JTextField();
+        timeField.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                timeField.setText("");
+            }
+        });
+    }
+
+    public void initializeAddToCalendarPanelLabels() {
+        name = new JLabel("Enter Name of Entry:");
+        time = new JLabel("Enter Time in 24-Hour Format (0000-2359):");
+    }
+
+    public void initializeAddToCalendarPanelButtons() {
+        enter = new JButton("Add to Calendar");
+        returnToCalendar = new JButton("Return to Calendar");
     }
 
     public void addButton(JButton button, JPanel panel) {
