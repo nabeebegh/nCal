@@ -20,9 +20,9 @@ for a user like me that only needed to use the most necessary features.*
  
 ## User Stories
 The following are "User stories" that describe how someone can use **nCal** to produce a specific outcome
-- "*As a user, I want to be able to add events to my calendar.*"
-- "*As a user, I want to be able to add reminders to my calendar.*"
-- "*As a user, I want to be able to add todo-list tasks to my calendar.*"
+- "*As a user, I want to be able to add multiple events to my calendar.*"
+- "*As a user, I want to be able to add multiple reminders to my calendar.*"
+- "*As a user, I want to be able to add multiple todo-list tasks to my calendar.*"
 - "*As a user, I want to be able to view the calendar and see my entries.*"
 - "*As a user, I want to be able to delete an entry from the calendar*"
 - "*As a user, I want to be able to save my calendar and view it later*"

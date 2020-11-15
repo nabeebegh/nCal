@@ -1,8 +1,14 @@
 {
-    "reminders": [{
-        "name": "Show Project to Chris",
-        "time": 1300
-    }],
+    "reminders": [
+        {
+            "name": "Show Project to Chris",
+            "time": 1300
+        },
+        {
+            "name": "Pick Up Groceries From Superstore",
+            "time": 1000
+        }
+    ],
     "month": {"month": "January"},
     "todos": [
         {
