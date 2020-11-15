@@ -1,7 +1,48 @@
 {
-    "reminders": [],
+    "reminders": [{
+        "name": "Show Project to Chris",
+        "time": 1300
+    }],
     "month": {"month": "January"},
-    "todos": [],
+    "todos": [
+        {
+            "name": "Finish Lab 8 due",
+            "time": 2300
+        },
+        {
+            "name": "Hand-in Assignment",
+            "time": 1900
+        }
+    ],
     "day": 1,
-    "events": []
+    "events": [
+        {
+            "name": "CPSC 210 Lecture",
+            "time": 1500
+        },
+        {
+            "name": "CPSC 121 lecture",
+            "time": 1400
+        },
+        {
+            "name": "CPSC 121 lab",
+            "time": 1700
+        },
+        {
+            "name": "Piano Lessons",
+            "time": 2000
+        },
+        {
+            "name": "Play Valorant",
+            "time": 2100
+        },
+        {
+            "name": "Read Book ",
+            "time": 2200
+        },
+        {
+            "name": "Go to sleep",
+            "time": 2300
+        }
+    ]
 }

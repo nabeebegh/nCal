@@ -2,6 +2,8 @@ package ui;
 
 import model.*;
 import model.Event;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -11,6 +13,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -104,6 +110,18 @@ public class RunCalendarApp extends CalendarApp {
         mainMenu();
         listOfDatesMax();
         newFrame(mainMenu, BorderLayout.SOUTH, MAIN_MENU_WIDTH, MAIN_MENU_LENGTH);
+        playSound("appOpen");
+    }
+
+    public void playSound(String soundName) {
+        InputStream sound;
+        try {
+            sound = new FileInputStream(new File("./data/sounds/" + soundName + ".wav"));
+            AudioStream audio = new AudioStream(sound);
+            AudioPlayer.player.start(audio);
+        } catch (IOException e) {
+            System.out.println("Error with playSound(" + soundName + ")");
+        }
     }
 
     public void initializeMainMenuButtons() {
@@ -123,29 +141,41 @@ public class RunCalendarApp extends CalendarApp {
         });
         saveCalendar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mainMenuText.setText("Calendar has been saved.");
                 saveCalendar();
             }
         });
         loadCalendar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mainMenuText.setText("Previously saved calendar has been loaded.");
                 loadCalendar();
             }
         });
         quitApp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                playSound("appClose");
+                delay(1550);
                 System.exit(0);
             }
         });
     }
 
+    public void delay(int i) {
+        try {
+            Thread.sleep(i);
+        } catch (Exception ev) {
+            System.out.println("Error with delay()");
+        }
+    }
+
     public void saveCalendar() {
         calendarApp.saveAllMonths();
+        mainMenuText.setText("Calendar has been saved.");
+        playSound("calendarSaved");
     }
 
     public void loadCalendar() {
         calendarApp.loadAllMonths();
+        mainMenuText.setText("Previously saved calendar has been loaded.");
+        playSound("calendarLoaded");
     }
 
     public void newFrame(JPanel panel, String layout, int w, int l) {
@@ -401,7 +431,7 @@ public class RunCalendarApp extends CalendarApp {
         addTodo = new JButton("Add Todo");
         removeEvent = new JButton("Remove Event");
         removeReminder = new JButton("Remove Reminder");
-        removeTodo = new JButton("Remove Todo");
+        removeTodo = new JButton("Mark Todo Completed");
         backButton = new JButton("<< Month Selection");
         update = new JButton("Show selected date");
         saveCalendarInViewMonth = new JButton("Save");
@@ -450,6 +480,8 @@ public class RunCalendarApp extends CalendarApp {
         });
         exitCalendarInViewMonth.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                playSound("appClose");
+                delay(1550);
                 System.exit(0);
             }
         });
@@ -516,6 +548,7 @@ public class RunCalendarApp extends CalendarApp {
         enter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (addToCalendar(l)) {
+                    playSound("calendarLoaded");
                     switchWindow(addPanel, monthPanel, BorderLayout.NORTH, MONTH_WIDTH, MONTH_LENGTH);
                 }
             }
