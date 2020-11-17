@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidDayException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,14 +22,17 @@ public class Date {
     private List<Reminder> reminderList;  // user entry of reminders
     private List<Todo> todoList;          // user entry of to-do list tasks
 
-    // REQUIRES: 1 <= day <= Maximum Days in given month
-    // EFFECTS: Constructs a day with a month, day, and empty lists for user entries.
-    public Date(Month month, int day) {
+    // EFFECTS: If (1 <= day <= Maximum Days) is not true, throw InvalidDayException
+    //          Otherwise, construct a day with a month, day, and empty lists for user entries.
+    public Date(Month month, int day) throws InvalidDayException {
         this.month = month;
         this.day = day;
         this.eventList = new ArrayList<>();
         this.reminderList = new ArrayList<>();
         this.todoList = new ArrayList<>();
+        if (day < 1 || day > month.getNumberOfDays()) {
+            throw new InvalidDayException();
+        }
     }
 
     // GETTERS

@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.InvalidDayException;
 import model.*;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,8 @@ public class SaveCalendarTest extends JsonTest {
             fail("IOException was expected");
         } catch (IOException e) {
             // pass
+        } catch (InvalidDayException e) {
+            fail("InvalidDayException was not expected in the testSaveCalendarInvalidFile() test.");
         }
     }
 
@@ -51,6 +54,8 @@ public class SaveCalendarTest extends JsonTest {
             checkDate(day, month, eventList, reminderList, todoList, d);
         } catch (IOException e) {
             fail("Exception should not have been thrown");
+        } catch (InvalidDayException e) {
+            fail("InvalidDayException was not expected to be thrown during testSaveCalendarEmptyDate() test.");
         }
     }
 
@@ -82,6 +87,8 @@ public class SaveCalendarTest extends JsonTest {
             checkDate(day, month, eventList, reminderList, todoList, d);
         } catch (IOException e) {
             fail("Exception should not have been thrown");
+        } catch (InvalidDayException e) {
+            fail("InvalidDayException was not expected to be thrown during testSaveCalendarGeneralDate() test");
         }
     }
 

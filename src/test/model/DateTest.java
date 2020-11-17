@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidDayException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +27,11 @@ public class DateTest {
     @BeforeEach
     public void runBefore(){
         testMonth = new Month(month);
-        testDate = new Date(testMonth, day);
+        try {
+            testDate = new Date(testMonth, day);
+        } catch (InvalidDayException e) {
+            fail("InvalidDateException is not expected during runBefore() of DateTest class.");
+        }
         testEvent = new Event("Test Event", 800);
         testReminder = new Reminder("Test Reminder", 1100);
         testTodo = new Todo("Test Todo", 1400);
@@ -96,6 +101,57 @@ public class DateTest {
         assertEquals(0, (testDate.getTodoList().size()));
 
         assertFalse(testDate.removeTodo(testTodo)); // Tests removal of element that is not in list
+    }
+
+    @Test
+    public void testDateDoesNotThrowInvalidDateException() {
+        try {
+            Date date = new Date(testMonth, 1);
+        } catch (InvalidDayException e) {
+            fail("InvalidDateException was no expected during testDateDoesNotThrowInvalidDateException() test.");
+        }
+        try {
+            Date date = new Date(testMonth, testMonth.getNumberOfDays());
+        } catch (InvalidDayException e) {
+            fail("InvalidDateException was no expected during testDateDoesNotThrowInvalidDateException() test.");
+        }
+        try {
+            Date date = new Date(testMonth, 15);
+        } catch (InvalidDayException e) {
+            fail("InvalidDateException was no expected during testDateDoesNotThrowInvalidDateException() test.");
+        }
+    }
+
+    @Test
+    public void testThrowsInvalidDateException() {
+        try {
+            Date date = new Date(testMonth, 0);
+            fail("InvalidDayException was expected during testThrowsInvalidDateException() test" +
+                    ", but it was not thrown.");
+        } catch (InvalidDayException e) {
+            // pass
+        }
+        try {
+            Date date = new Date(testMonth, 32);
+            fail("InvalidDayException was expected during testThrowsInvalidDateException() test" +
+                    ", but it was not thrown.");
+        } catch (InvalidDayException e) {
+            // pass
+        }
+        try {
+            Date date = new Date(testMonth, 500);
+            fail("InvalidDayException was expected during testThrowsInvalidDateException() test" +
+                    ", but it was not thrown.");
+        } catch (InvalidDayException e) {
+            // pass
+        }
+        try {
+            Date date = new Date(testMonth, -1);
+            fail("InvalidDayException was expected during testThrowsInvalidDateException() test" +
+                    ", but it was not thrown.");
+        } catch (InvalidDayException e) {
+            // pass
+        }
     }
 
 

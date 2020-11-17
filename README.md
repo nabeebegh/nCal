@@ -28,3 +28,12 @@ The following are "User stories" that describe how someone can use **nCal** to p
 - "*As a user, I want to be able to save my calendar and view it later*"
 - "*As a user, I want to be able to load a previously saved calendar*"
 
+## Phase 4: Task 2
+For this task, I chose to make the Date class robust. Originally, the constructor of the Date
+class which has an *int day* parameter passed through it had the following requires clause: 
+**REQUIRES: 1 <= day <= Maximum Days in given month*. The constructor in the Date class was the only method in the
+class with a requires clause. To make the constructor robust, I implemented a checked exception called *InvalidDayException*,
+which was thrown by the constructor of the date class if the conditions of the original requires clause was not met. With the exception being
+fully tested and implemented, the requires clause was removed and the effects clause was updated to :*EFFECTS: If (1 <= day <= Maximum Days) is not true, throw InvalidDayException.
+Otherwise, construct a day with a month, day, and empty lists for user entries.*. Thus, the Date class is now robust!
+

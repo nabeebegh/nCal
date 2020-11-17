@@ -7,6 +7,10 @@
         {
             "name": "Return Books to Library",
             "time": 1800
+        },
+        {
+            "name": "Give Mom a Phone Call",
+            "time": 1900
         }
     ],
     "month": {"month": "January"},
@@ -49,10 +53,6 @@
         {
             "name": "Play Valorant",
             "time": 2100
-        },
-        {
-            "name": "Go To Sleep",
-            "time": 2300
         }
     ]
 }

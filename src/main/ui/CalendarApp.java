@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.InvalidDayException;
 import model.*;
 import persistence.*;
 
@@ -69,7 +70,12 @@ public class CalendarApp {
     //          amount of days in that month.
     public void createMonth(List<Date> l, Month m) {
         for (int i = 1; i <= m.getNumberOfDays(); i++) {
-            Date date = new Date(m, i);
+            Date date = null;
+            try {
+                date = new Date(m, i);
+            } catch (InvalidDayException e) {
+                System.out.println("Invalid day was chosen");
+            }
             l.add(date);
         }
     }

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import exceptions.InvalidDayException;
 import org.json.*;
 
 import model.*;
@@ -54,7 +55,12 @@ public class LoadCalendar {
         String name = monthJson.getString("month");
         int day = jsonObject.getInt("day");
         Month month = new Month(name);
-        Date d = new Date(month, day);
+        Date d = null;
+        try {
+            d = new Date(month, day);
+        } catch (InvalidDayException e) {
+            System.out.println("Invalid day was chosen");
+        }
         addEventList(d, jsonObject);
         addReminderList(d, jsonObject);
         addTodoList(d, jsonObject);
