@@ -471,6 +471,8 @@ public class CalendarApp {
                 l.add(d);
             } catch (IOException e) {
                 System.out.println("Unable to load data from: " + JSON + "/" + str);
+            } catch (InvalidDayException e) {
+                System.out.println("Invalid Day was chosen.");
             }
         }
     }

@@ -32,7 +32,7 @@ public class LoadCalendar {
     // EFFECTS: if error occurs in attempt to read data from file,
     //          throw IOException
     //          otherwise, reads Date from file and returns it;
-    public Date read() throws IOException {
+    public Date read() throws IOException, InvalidDayException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseDate(jsonObject);
@@ -50,17 +50,13 @@ public class LoadCalendar {
     }
 
     // EFFECTS: parses Date object for JSON object and returns it
-    private Date parseDate(JSONObject jsonObject) {
+    private Date parseDate(JSONObject jsonObject) throws InvalidDayException {
         JSONObject monthJson = jsonObject.getJSONObject("month");
         String name = monthJson.getString("month");
         int day = jsonObject.getInt("day");
         Month month = new Month(name);
         Date d = null;
-        try {
-            d = new Date(month, day);
-        } catch (InvalidDayException e) {
-            System.out.println("Invalid day was chosen");
-        }
+        d = new Date(month, day);
         addEventList(d, jsonObject);
         addReminderList(d, jsonObject);
         addTodoList(d, jsonObject);

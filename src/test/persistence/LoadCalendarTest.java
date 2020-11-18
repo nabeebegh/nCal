@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.InvalidDayException;
 import model.*;
 import org.junit.jupiter.api.Test;
 
@@ -21,9 +22,11 @@ public class LoadCalendarTest extends JsonTest {
         LoadCalendar reader = new LoadCalendar("./data/error.json");
         try {
            Date d = reader.read();
-            fail("IOException expected");
+           fail("IOException expected");
         } catch (IOException e) {
             // pass
+        } catch (InvalidDayException e) {
+            fail("InvalidDayException was not expected.");
         }
     }
 
@@ -36,6 +39,8 @@ public class LoadCalendarTest extends JsonTest {
             assertEquals("January", d.getMonth().getNameOfMonth());
         } catch (IOException e) {
             fail("Couldn't read from file");
+        } catch (InvalidDayException e) {
+            fail("InvalidDayException was not expected.");
         }
     }
 
@@ -54,6 +59,20 @@ public class LoadCalendarTest extends JsonTest {
             checkDate(day, month, eventList, reminderList, todoList, d);
         } catch (IOException e) {
             fail("Couldn't read from file");
+        } catch (InvalidDayException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void testLoadCalendarTriesToLoadBadDate() {
+        LoadCalendar reader = new LoadCalendar("./data/TEST/testLoadCalendarBadDate.json");
+        try {
+            Date d = reader.read();
+        } catch (IOException e) {
+            fail("IOException was not expected");
+        } catch (InvalidDayException e) {
+            // pass
         }
     }
 
