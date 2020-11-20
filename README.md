@@ -37,3 +37,9 @@ which was thrown by the constructor of the date class if the conditions of the o
 fully tested and implemented, the requires clause was removed and the effects clause was updated to: *EFFECTS: If (1 <= day <= Maximum Days) is not true, throw InvalidDayException.
 Otherwise, construct a day with a month, day, and empty lists for user entries.* Thus, the Date class is now robust!
 
+## Phase 4: Task 3
+Looking at my UML class diagram, I think the structure of my program is pretty simple and does not require too much refactoring.
+If I had to refactor, I would for sure take a better look at the Event, Reminder, and Todo classes, and notice that they are very similar.
+It would have been better to refactor them into a super class which said classes can extend. This refactoring would also help minimize the amount of code I had to write for some methods, but not by much.
+All in all, my UML class diagram does not show any coupling, and there does not seem to be any problems with the level of cohesion in my code.
+Thus, besides the one change mentioned, I do not think my program requires much refactoring.

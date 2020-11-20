@@ -22,7 +22,7 @@ import java.util.Map;
   Class which runs nCal for end user.
 */
 
-public class RunCalendarApp extends CalendarApp {
+public class RunCalendarApp {
 
     // CONSTANTS
     private static final int MAIN_MENU_WIDTH = 300;
